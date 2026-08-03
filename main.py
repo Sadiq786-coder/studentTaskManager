@@ -1,10 +1,22 @@
+import json
+def load_tasks():
+    try:
+        with open("tasks.json", "r") as file:
+            return json.load(file)
+
+    except FileNotFoundError:
+        return []
+def save_tasks(tasks):
+    with open("tasks.json", "w") as file:
+        json.dump(tasks, file, indent=4)
+        
 print("===== Student Task Manager =====")
 
 name = input("Enter your name: ")
 
 print("\nHello", name)
 
-tasks = []
+tasks = load_tasks()
 
 while True:
     print("1. Add Task")
@@ -25,7 +37,7 @@ while True:
         }
 
         tasks.append(task)
-
+        save_tasks(tasks)
         print("Task added successfully!")
 
     # View Tasks
@@ -63,7 +75,7 @@ while True:
             if 1 <= task_number <= len(tasks):
 
                 tasks[task_number - 1]["completed"] = True
-
+                save_tasks(tasks)
                 print("Task marked as completed successfully!")
 
             else:
@@ -93,7 +105,7 @@ while True:
         if 1 <= task_number <= len(tasks):
 
             deleted_task = tasks.pop(task_number - 1)
-
+            save_tasks(tasks)
             print(f"Task '{deleted_task['name']}' deleted successfully!")
 
         else:
