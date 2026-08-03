@@ -64,7 +64,7 @@ while True:
 
                 tasks[task_number - 1]["completed"] = True
 
-                print("Task marked as completed!")
+                print("Task marked as completed successfully!")
 
             else:
                 print("Invalid task number.")
