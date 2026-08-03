@@ -1,6 +1,10 @@
 [
     {
         "name": "Learn Git",
-        "completed": false
+        "completed": true
+    },
+    {
+        "name": "Practice Python",
+        "completed": true
     }
 ]
